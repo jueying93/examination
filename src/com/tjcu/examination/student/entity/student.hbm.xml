@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.tjcu.examination.student.entity">
+
+	<class name="Student" table="T_STUDENT">
+		<id name="id" column="ID">
+			<generator class="uuid"></generator>
+		</id>	
+		<property name="account" type="java.lang.String">
+			<column name="ACCOUNT" not-null="true" length="30"></column>
+		</property>
+		<property name="password" type="java.lang.String">
+			<column name="PASSWORD" not-null="true" length="30"></column>
+		</property>
+		<property name="username" type="java.lang.String">
+			<column name="USERNAME" not-null="true" length="30"></column>
+		</property>
+		<property name="ip" type="java.lang.String">
+			<column name="IP" length="60"></column>
+		</property>
+		<property name="major" type="java.lang.String">
+			<column name="MAJOR" not-null="true" length="80"></column>
+		</property>
+		<property name="grade" type="java.lang.String">
+			<column name="GRADE" not-null="true" length="30"></column>
+		</property>
+		
+		<!--配置一对多关联映射（通过student管理到examinationPaper）-->
+		 <set name="examinationPapers" table="T_EXAMINATION" lazy="false">
+		 	<key column="STUDENT_ID"></key>
+		 	<one-to-many class="ExaminationPaper"></one-to-many>
+		 </set>
+		<!--配置多对一关联映射(teacher-student)-->
+		<many-to-one name="teacher" lazy="false" column="TEACHER_ID" class="com.tjcu.examination.teacher.entity.Teacher">
+
+		</many-to-one>
+		 
+
+		 
+	</class>
+	
+
+</hibernate-mapping>

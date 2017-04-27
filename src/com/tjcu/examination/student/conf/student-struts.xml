@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="studentAction" namespace="/" extends="struts-default">
+		<action name="student_*" class="com.tjcu.examination.student.action.StudentAction"  method="{1}" >
+			<!-- 跳转到主页 -->
+			<result name="home">WEB-INF/jsp/home.jsp</result>
+			<result name="{1}">WEB-INF/jsp/student/{1}.jsp</result>
+			<result name="index">index.jsp</result><!--学生登录时，当用户名或密码出现错误时，转发的登录页面-->
+			<result name="normalExminationError">WEB-INF/jsp/student/normalExminationError.jsp</result>
+			<result name="success">WEB-INF/jsp/success.jsp</result>
+           
+		</action>
+	</package>
+			
+	
+</struts>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="adminAction" namespace="/" extends="struts-default">
+		<action name="admin_*" class="com.tjcu.examination.admin.action.AdminAction"  method="{1}" >
+			<!-- 跳转到主页 -->
+			<result name="home">WEB-INF/jsp/home.jsp</result>
+			<result name="{1}">WEB-INF/jsp/admin/{1}.jsp</result>
+			<result name="index">index.jsp</result><!--管理员登录时，当用户名或密码出现错误时，转发的登录页面-->
+            <result name="teacherListUI">/WEB-INF/jsp/admin/teacherListUI.jsp</result>
+            <result name="success">WEB-INF/jsp/success.jsp</result>
+			<result name="updateAdminUI">WEB-INF/jsp/admin/updateAdminUI.jsp</result><!--当更新管理员出错时，跳转到更新页面-->
+		</action>
+	</package>
+			
+	
+</struts>

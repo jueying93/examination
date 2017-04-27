@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping package="com.tjcu.examination.admin.entity" auto-import="true" >
+<class name="Admin" table="T_ADMIN" >
+	<id name="id" column="ID">
+		<generator class="uuid"></generator>
+	</id>
+	<property name="account" type="java.lang.String">
+		<column name="ACCOUNT" not-null="true" length="30"></column>
+	</property>
+	<property name="username" type="java.lang.String">
+		<column name="USERNAME" not-null="true" length="30"></column>
+	</property>
+	<property name="password" type="java.lang.String">
+		<column name="PASSWORD" not-null="true" length="30"></column>
+	</property>
+
+
+</class>
+</hibernate-mapping>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+	
+<hibernate-mapping package="com.tjcu.examination.core.entity" auto-import="true" >
+<class name="Menu" table="T_Menu" >
+	<id name="id" column="ID">
+		<generator class="uuid"></generator>
+	</id>
+	<property name="name" type="java.lang.String">
+		<column name="NAME" not-null="true" length="30"></column>
+	</property>
+	<property name="url" type="java.lang.String">
+		<column name="url" not-null="true" length="50"></column>
+	</property>
+	<property name="state" type="java.lang.String">
+		<column name="STATE" not-null="true" length="5"></column>
+	</property>
+
+
+</class>
+</hibernate-mapping>

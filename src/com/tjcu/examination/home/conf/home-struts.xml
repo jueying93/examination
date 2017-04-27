@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<!-- 纳税服务的home板块 -->
+<struts>
+	<package name="homeaction" namespace="/" extends="struts-default">
+		<action name="home_*" class="com.tjcu.examination.home.action.HomeAction" method="{1}">
+			<result name="{1}">/WEB-INF/jsp/{1}.jsp</result>
+		</action>
+		
+	</package>
+		
+</struts>

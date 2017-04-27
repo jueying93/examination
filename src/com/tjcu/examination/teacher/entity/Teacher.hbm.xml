@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.tjcu.examination.teacher.entity" auto-import="true">
+	
+	<class name="Teacher" table="T_TEACHER">
+		<id name="id" column="ID">
+			<generator class="uuid"></generator>
+		</id>	
+		<property name="account" type="java.lang.String">
+			<column name="ACCOUNT" length="30" not-null="true"></column>
+		</property>
+		<property name="password" type="java.lang.String">
+			<column name="PASSWORD" length="30" not-null="true"></column>
+		</property>
+		<property name="username" type="java.lang.String">
+			<column name="USERNAME" length="30" not-null="true"></column>
+		</property>
+    	<property name="startDate" type="java.util.Date">
+			<column name="STARTDATE" length="30" ></column>
+		</property>
+		<property name="endDate" type="java.util.Date">
+			<column name="ENDDATE" length="30" ></column>
+		</property>
+		
+		
+		
+		<!--配置一对多的映射（通过老师管理学生）-->
+		<set name="students" table="T_STUDENT" lazy="false">
+			<key column="TEACHER_ID"></key>
+			<one-to-many class="com.tjcu.examination.student.entity.Student"></one-to-many>
+		</set>
+		<!--配置一对多的映射（通过老师管理题库中的题目）-->
+		<set name="questions" table="T_QUESTION" lazy="false"  >
+			<key column="TEACHER_ID"></key>
+			<one-to-many class="com.tjcu.examination.teacher.entity.Question"></one-to-many>
+		</set>
+	</class>
+	
+
+</hibernate-mapping>

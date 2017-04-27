@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.tjcu.examination.student.entity">
+
+	<class name="ExaminationPaper" table="T_EXAMINATIONPAPER">
+		<id name="id" column="ID">
+			<generator class="uuid"></generator>
+		</id>	
+		<many-to-one name="student" column="STUDENT_ID" class="Student"></many-to-one>
+		<!--
+              map集合的映射
+                  key  指定外键字段
+                  map-key 指定map的key
+                  element  指定map的value
+           -->
+		<map name="questionOption" table="T_QUESTIONOPTION" lazy="false">
+			<key column="EXAMINATIONPAPER_ID"></key>
+			<map-key type="string" column="QUESTION"></map-key>
+			<element type="string" column="OPTION2"></element>
+		</map>
+
+		<property name="score" type="java.lang.Integer">
+			<column name="SCORE"></column>
+		</property>
+		<property name="state" type="java.lang.Integer">
+			<column name="STATE"></column>
+		</property>
+		<property name="paperDate" type="java.util.Date">
+			<column name="PAPERDATE" ></column>
+		</property>
+
+	</class>
+</hibernate-mapping>

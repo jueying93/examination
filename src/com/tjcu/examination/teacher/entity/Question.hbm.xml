@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.tjcu.examination.teacher.entity">
+	
+	<class name="Question" table="T_QUESTION">
+		<id name="id" column="ID">
+			<generator class="uuid"></generator>
+		</id>
+
+		<property name="stem" type="java.lang.String">
+			<column name="STEM" length="150" not-null="true"></column>
+		</property>
+		<!--list集合映射
+			list-index  指定的是排序列的名称 (因为要保证list集合的有序)
+		-->
+		<!--cascade:级联删除意思是：当删除该question时，与其相关联的entity也要删除-->
+		<list name="options" table="T_OPTIONS" lazy="false" cascade="all" access="field">
+			<key column="QUESTION_ID"></key>
+			<list-index column="OPTION_ID"></list-index>
+			<element column="OPTION1" type="string"></element>
+		</list>
+		<property name="answer" type="java.lang.String" >
+			<column name="ANSWER" not-null="true" length="30"></column>
+		</property>
+
+		<many-to-one name="teacher" class="com.tjcu.examination.teacher.entity.Teacher" lazy="false" >
+			<column name="TEACHER_ID" ></column>
+		</many-to-one>
+
+
+
+	</class>
+	
+
+</hibernate-mapping>
